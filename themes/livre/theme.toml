@@ -1,0 +1,4 @@
+name = "Livre"
+description = "Thème typographique « livre imprimé » pour notes de lecture, journal, dictionnaires et poésie."
+min_version = "0.146.0"
+license = "MIT"

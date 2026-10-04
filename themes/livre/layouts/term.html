@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="liste">
+  <header><p class="eyebrow">{{ .Data.Plural | humanize }}</p><h1>{{ .Title }}</h1></header>
+  <ul class="index">
+    {{ range .Pages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}"><em>{{ .Title }}</em></a>{{ with .Params.author }} <span class="meta">— {{ . }}</span>{{ end }}</li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

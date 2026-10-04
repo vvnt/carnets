@@ -1,0 +1,6 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Params.abstract }}{{ . | plainify | truncate 160 }}{{ else }}{{ site.Params.description }}{{ end }}">
+{{- $css := slice (resources.Get "css/fonts.css" | resources.ExecuteAsTemplate "css/fonts.css" .) (resources.Get "css/base.css") (resources.Get "css/layout.css") (resources.Get "css/components.css") | resources.Concat "css/livre.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

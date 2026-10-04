@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $sorted := sort .Parent.Pages "File.ContentBaseName" "asc" }}
+{{ $prev := "" }}{{ $next := "" }}
+{{ range $i, $p := $sorted }}
+  {{ if eq $p.File.UniqueID $.File.UniqueID }}
+    {{ if gt $i 0 }}{{ $prev = index $sorted (sub $i 1) }}{{ end }}
+    {{ if lt (add $i 1) (len $sorted) }}{{ $next = index $sorted (add $i 1) }}{{ end }}
+  {{ end }}
+{{ end }}
+<article class="journal">
+  <header>
+    <p class="eyebrow"><a href="{{ .Parent.RelPermalink }}">Journal</a></p>
+    <h1>{{ partial "journal-date.html" . | time.Format ":date_full" }}</h1>
+  </header>
+  {{ partial "render-notes.html" (dict "page" . "class" "note") }}
+  <nav class="prevnext" aria-label="Jours voisins" data-pagefind-ignore>
+    {{ with $prev }}<a class="prev" rel="prev" href="{{ .RelPermalink }}">← {{ partial "journal-date.html" . | time.Format ":date_medium" }}</a>{{ end }}
+    {{ with $next }}<a class="next" rel="next" href="{{ .RelPermalink }}">{{ partial "journal-date.html" . | time.Format ":date_medium" }} →</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

@@ -1,0 +1,77 @@
+baseURL = "https://vvnt.github.io/carnets/"
+title = "Carnet"
+locale = "fr-FR"
+defaultContentLanguage = "fr"
+theme = "livre"
+enableRobotsTXT = true
+titleCaseStyle = "none"
+disableKinds = ["RSS"]
+
+[taxonomies]
+  author = "author"
+  tag = "tags"
+
+[params]
+  description = "Notes de lecture, journal, dictionnaires et anthologie."
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      strikethrough = false
+      table = true
+      taskList = true
+      [markup.goldmark.extensions.extras]
+        [markup.goldmark.extensions.extras.delete]
+          enable = true
+        [markup.goldmark.extensions.extras.insert]
+          enable = true
+        [markup.goldmark.extensions.extras.mark]
+          enable = true
+        [markup.goldmark.extensions.extras.subscript]
+          enable = true
+        [markup.goldmark.extensions.extras.superscript]
+          enable = true
+      [markup.goldmark.extensions.typographer]
+        apostrophe = "&rsquo;"
+        disable = false
+        ellipsis = "&hellip;"
+        emDash = "&mdash;"
+        enDash = "&ndash;"
+        leftAngleQuote = "&laquo;&#8239;"
+        rightAngleQuote = "&#8239;&raquo;"
+        leftDoubleQuote = "&laquo;&#8239;"
+        rightDoubleQuote = "&#8239;&raquo;"
+        leftSingleQuote = "&lsquo;"
+        rightSingleQuote = "&rsquo;"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[menus]
+  [[menus.main]]
+    name = "Journal"
+    pageRef = "/journal"
+    weight = 10
+  [[menus.main]]
+    name = "Notes de lecture"
+    pageRef = "/ndl"
+    weight = 20
+  [[menus.main]]
+    name = "Dictionnaires"
+    pageRef = "/dictionnaires"
+    weight = 30
+  [[menus.main]]
+    name = "Anthologie"
+    pageRef = "/anthologie"
+    weight = 40
+  [[menus.main]]
+    name = "Citations"
+    pageRef = "/citations"
+    weight = 50
+  [[menus.main]]
+    name = "Recherche"
+    pageRef = "/recherche"
+    weight = 90

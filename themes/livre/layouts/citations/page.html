@@ -1,0 +1,6 @@
+{{ define "main" }}
+<article class="citations">
+  <header><h1>{{ .Title }}</h1></header>
+  {{ partial "render-notes.html" (dict "page" . "class" "citation") }}
+</article>
+{{ end }}

@@ -1,0 +1,3 @@
+{{- /* Date d'une note de journal, d'après le nom de fichier AAAA_MM_JJ.md (ou AAAA-MM-JJ). */ -}}
+{{- $d := replace .File.ContentBaseName "_" "-" -}}
+{{- return (time.AsTime (substr $d 0 10)) -}}

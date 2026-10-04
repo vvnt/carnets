@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="liste journal-index">
+  <header><h1>{{ .Title }}</h1></header>
+  {{ partial "content.html" . }}
+  {{ $cur := "" }}
+  {{ range sort .Pages "File.ContentBaseName" "desc" }}
+    {{ $date := partial "journal-date.html" . }}
+    {{ $m := $date | time.Format "2006-01" }}
+    {{ if ne $m $cur }}
+      {{ if $cur }}</ul>{{ end }}
+      <h2 class="mois">{{ $date | time.Format "January 2006" }}</h2>
+      <ul class="index">
+      {{ $cur = $m }}
+    {{ end }}
+    <li><a href="{{ .RelPermalink }}">{{ $date | time.Format ":date_full" }}</a></li>
+  {{ end }}
+  </ul>
+</section>
+{{ end }}

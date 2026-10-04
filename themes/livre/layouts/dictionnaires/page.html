@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $html := partial "fr-typo.html" .Content }}
+{{- /* Une ancre par terme : <dt id="…"> */ -}}
+{{ $parts := split $html "<dt>" }}
+{{ $out := slice (index $parts 0) }}
+{{ range after 1 $parts }}
+  {{ $term := index (split . "</dt>") 0 | plainify | htmlUnescape }}
+  {{ $out = $out | append (printf `<dt id="%s">%s` ($term | anchorize) .) }}
+{{ end }}
+<article class="dico">
+  <header>
+    <p class="eyebrow"><a href="{{ .Parent.RelPermalink }}">Dictionnaire</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="subtitle">{{ . }}</p>{{ end }}
+  </header>
+  {{ with .Fragments.Headings }}
+  <nav class="az" aria-label="Index alphabétique" data-pagefind-ignore>
+    {{ range . }}<a href="#{{ .ID }}">{{ .Title | plainify }}</a>{{ end }}
+  </nav>
+  {{ end }}
+  {{ delimit $out "" | safeHTML }}
+</article>
+{{ end }}

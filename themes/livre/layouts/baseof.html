@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="{{ .Type }} {{ .Kind }}">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  {{- partial "header.html" . -}}
+  <main id="contenu"{{ if ne .Type "recherche" }} data-pagefind-body{{ end }}>
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+</body>
+</html>

@@ -1,0 +1,8 @@
+{{- /* Espaces insécables à la française, sur un fragment HTML hors <pre>. */ -}}
+{{- $s := printf "%s" . -}}
+{{- $s = replaceRE `([^\s>]) :` "${1}&nbsp;:" $s -}}
+{{- /* Deux passes : les correspondances successives (« ? »  !) se recouvrent. */ -}}
+{{- $s = replaceRE `([^\s>]) ([;!?»])` "${1}&#8239;${2}" $s -}}
+{{- $s = replaceRE `([^\s>]) ([;!?»])` "${1}&#8239;${2}" $s -}}
+{{- $s = replaceRE `« ` "«&#8239;" $s -}}
+{{- return $s -}}

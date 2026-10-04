@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="home">
+  <header class="home-intro">
+    <h1>{{ site.Title }}</h1>
+    {{ partial "content.html" . }}
+  </header>
+
+  {{ with site.GetPage "/citations" }}
+    {{ $parts := partial "split-notes.html" . }}
+    {{ if $parts }}
+    <section class="citation-du-jour" aria-label="Citation du jour">
+      {{ $q := index $parts (mod now.YearDay (len $parts)) }}
+      {{ partial "fr-typo.html" (.RenderString (dict "display" "block") $q) | safeHTML }}
+    </section>
+    {{ end }}
+  {{ end }}
+
+  {{ with site.GetPage "/journal" }}
+  <section class="home-bloc">
+    <h2><a href="{{ .RelPermalink }}">Journal</a></h2>
+    <ul class="index">
+      {{ range first 5 (sort .Pages "File.ContentBaseName" "desc") }}
+      <li><a href="{{ .RelPermalink }}">{{ partial "journal-date.html" . | time.Format ":date_long" }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with site.GetPage "/ndl" }}
+  <section class="home-bloc">
+    <h2><a href="{{ .RelPermalink }}">Notes de lecture</a></h2>
+    <ul class="index">
+      {{ range first 5 .Pages.ByLastmod.Reverse }}
+      <li><a href="{{ .RelPermalink }}"><em>{{ .Title }}</em></a>{{ with .Params.author }} <span class="meta">— {{ . }}</span>{{ end }}</li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

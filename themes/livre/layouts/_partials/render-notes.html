@@ -1,0 +1,12 @@
+{{- /* Rend chaque morceau (page en contexte : .page, classe : .class) comme un bloc séparé. */ -}}
+{{- $page := .page -}}
+{{- $parts := partial "split-notes.html" $page -}}
+{{- $n := len $parts -}}
+{{- range $i, $p := $parts -}}
+  <section class="{{ $.class }}">
+    {{- partial "fr-typo.html" ($page.RenderString (dict "display" "block") $p) | safeHTML -}}
+  </section>
+  {{- if lt (add $i 1) $n }}
+  <p class="fleuron" aria-hidden="true">❦</p>
+  {{- end }}
+{{- end -}}

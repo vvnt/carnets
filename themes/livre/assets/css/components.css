@@ -1,0 +1,38 @@
+/* Sommaire */
+.toc { margin: 1.4rem 0 2rem; padding: 0.6rem 1rem; border-block: 1px solid var(--rule); font-size: 0.92rem; }
+.toc summary { cursor: pointer; font-variant-caps: all-small-caps; letter-spacing: 0.1em; color: var(--muted); }
+.toc nav ul { list-style: none; margin: 0.4rem 0 0; padding-left: 0; }
+.toc nav ul ul { padding-left: 1.2rem; }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* Notes de lecture */
+.abstract { font-style: italic; margin: 1rem 0 1.6rem; padding: 0 1.2rem; text-align: justify; }
+.abstract p { text-indent: 0; }
+.ndl .content > p:first-of-type::first-letter { initial-letter: 2.6; margin-right: 0.12em; font-weight: 500; color: var(--accent); font-feature-settings: "lnum"; }
+@supports not (initial-letter: 2) {
+  .ndl .content > p:first-of-type::first-letter { float: left; font-size: 3.1em; line-height: 0.82; padding: 0.04em 0.1em 0 0; color: var(--accent); }
+}
+.tags { margin-top: 2rem; color: var(--muted); font-variant-caps: all-small-caps; letter-spacing: 0.06em; text-align: left; text-indent: 0 !important; }
+.tags a { margin-right: 0.8em; text-decoration: none; }
+.tags a::before { content: "#"; }
+
+/* Journal / citations : blocs séparés */
+.note, .citation { margin: 0; }
+.citation blockquote { margin-left: 0; }
+.citation blockquote p:last-child { font-style: normal; text-align: right; font-variant-caps: small-caps; letter-spacing: 0.04em; }
+
+/* Dictionnaires */
+.az { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.2rem 0.7rem; margin: 1rem 0 1.8rem; font-variant-caps: all-small-caps; letter-spacing: 0.08em; position: sticky; top: 0; background: var(--paper); padding: 0.4rem 0; border-bottom: 1px solid var(--rule); z-index: 2; }
+.az a { text-decoration: none; padding: 0 0.15rem; }
+.dico h2.lettre { font-size: 1.6rem; margin: 2.2rem 0 0.2rem; color: var(--accent); font-variant-caps: normal; border-bottom: 1px solid var(--rule); }
+.dico dt:target { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+/* Anthologie : vers préservés, pas de justification */
+.anthologie .content h2 { margin-top: 3rem; text-align: center; border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+.anthologie .content h3 { text-align: center; font-size: 1.25rem; margin-top: 2.4rem; }
+.anthologie .content p { white-space: pre-line; text-align: left; text-indent: 0; margin: 1.1rem 0 0; hyphens: none; padding-left: 1.5rem; text-wrap: wrap; }
+.anthologie .content blockquote p { padding-left: 0; }
+
+/* Recherche (Pagefind) */
+.recherche { --pagefind-ui-scale: 1; --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--paper); --pagefind-ui-border: var(--rule); --pagefind-ui-tag: var(--rule); --pagefind-ui-font: var(--serif); --pagefind-ui-border-radius: 2px; }

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="ndl">
+  <header>
+    <p class="eyebrow"><a href="{{ .Parent.RelPermalink }}">Note de lecture</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+    {{ with .GetTerms "author" }}<p class="byline">{{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}</p>
+    {{ else }}{{ with .Params.author }}<p class="byline">{{ . }}</p>{{ end }}{{ end }}
+  </header>
+  {{ with .Params.abstract }}<div class="abstract">{{ . | markdownify }}</div>{{ end }}
+  {{ if gt (len .Fragments.Identifiers) 3 }}
+  <details class="toc" open><summary>Sommaire</summary>{{ .TableOfContents }}</details>
+  {{ end }}
+  <div class="content">{{ partial "content.html" . }}</div>
+  {{ with .GetTerms "tags" }}
+  <p class="tags" data-pagefind-ignore>{{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }}</p>
+  {{ end }}
+</article>
+{{ end }}

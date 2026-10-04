@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article class="anthologie">
+  <header><h1>{{ .Title }}</h1></header>
+  <details class="toc" open><summary>Auteurs et poèmes</summary>{{ .TableOfContents }}</details>
+  <div class="content">{{ partial "content.html" . }}</div>
+</article>
+{{ end }}

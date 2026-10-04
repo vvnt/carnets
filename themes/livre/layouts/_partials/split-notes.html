@@ -1,0 +1,10 @@
+{{- /* Découpe le markdown d'une page sur les lignes « --- » ; renvoie une liste de morceaux non vides. */ -}}
+{{- $raw := replace .RawContent "\r\n" "\n" -}}
+{{- $raw = replaceRE `(?m)^---[ \t]*$` "@@NOTE@@" $raw -}}
+{{- $parts := slice -}}
+{{- range split $raw "@@NOTE@@" -}}
+  {{- with strings.TrimSpace . -}}
+    {{- $parts = $parts | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $parts -}}

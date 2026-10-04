@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="page recherche">
+  <header><h1>{{ .Title }}</h1></header>
+  <link href="{{ "pagefind/pagefind-ui.css" | relURL }}" rel="stylesheet">
+  <div id="recherche"></div>
+  <script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.PagefindUI) new PagefindUI({ element: '#recherche', showImages: false, showSubResults: true });
+    });
+  </script>
+  <noscript><p>La recherche nécessite JavaScript.</p></noscript>
+</article>
+{{ end }}

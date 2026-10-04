@@ -1,0 +1,5 @@
+{{- /* Dans un dictionnaire, les titres de niveau 1 sont les lettres : rendus en h2. */ -}}
+{{- $lvl := .Level -}}
+{{- $cls := "" -}}
+{{- if and (eq .Page.Type "dictionnaires") (eq .Level 1) }}{{ $lvl = 2 }}{{ $cls = ` class="lettre"` }}{{ end -}}
+<h{{ $lvl }}{{ $cls | safeHTMLAttr }} id="{{ .Anchor }}">{{ .Text | safeHTML }}<a class="anchor" href="#{{ .Anchor }}" aria-hidden="true">¶</a></h{{ $lvl }}>

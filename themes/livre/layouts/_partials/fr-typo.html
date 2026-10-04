@@ -1,0 +1,13 @@
+{{- /* Typographie française sur du HTML rendu ; les blocs <pre> sont laissés intacts. */ -}}
+{{- $in := printf "%s" . -}}
+{{- $out := slice -}}
+{{- range $i, $seg := split $in "<pre" -}}
+  {{- if eq $i 0 -}}
+    {{- $out = $out | append (partial "fr-typo-text.html" $seg) -}}
+  {{- else -}}
+    {{- $p := split $seg "</pre>" -}}
+    {{- $rest := delimit (after 1 $p) "</pre>" -}}
+    {{- $out = $out | append (printf "<pre%s</pre>%s" (index $p 0) (partial "fr-typo-text.html" $rest)) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (delimit $out "") -}}
