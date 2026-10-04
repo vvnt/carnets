@@ -27,7 +27,7 @@ collections:
     fields:
       - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "Le nom du fichier suit la date (AAAA_MM_JJ)." }
       - { name: title, label: Titre (facultatif), widget: string, required: false }
-      - { name: body, label: Notes, widget: markdown, hint: "Séparez les notes d'un même jour par une ligne ---." }
+      - { name: body, label: Notes, widget: markdown, modes: [raw], hint: "Séparez les notes d'un même jour par une ligne ---." }
 
   - name: ndl
     label: Notes de lecture
@@ -59,7 +59,7 @@ collections:
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: description, label: Description, widget: string, required: false }
-      - { name: body, label: Entrées, widget: markdown, hint: "Un titre de niveau 1 (# A) par lettre ; entrées au format « terme » puis « : définition »." }
+      - { name: body, label: Entrées, widget: markdown, modes: [raw], hint: "Un titre de niveau 1 (# A) par lettre ; entrées au format « terme » puis « : définition »." }
 
   - name: pages
     label: Pages
@@ -76,14 +76,14 @@ collections:
         fields:
           - { name: title, label: Titre, widget: string }
           - { name: type, label: Type, widget: hidden, default: anthologie }
-          - { name: body, label: Poèmes, widget: markdown, hint: "## Auteur puis ### Poème ; un vers par ligne." }
+          - { name: body, label: Poèmes, widget: markdown, modes: [raw], hint: "## Auteur puis ### Poème ; un vers par ligne." }
       - name: citations
         label: Citations
         file: content/citations.md
         fields:
           - { name: title, label: Titre, widget: string }
           - { name: type, label: Type, widget: hidden, default: citations }
-          - { name: body, label: Citations, widget: markdown, hint: "Séparez les citations par une ligne ---." }
+          - { name: body, label: Citations, widget: markdown, modes: [raw], hint: "Séparez les citations par une ligne ---." }
       - name: a-propos
         label: À propos
         file: content/a-propos.md
