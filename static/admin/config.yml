@@ -45,7 +45,7 @@ collections:
       - { name: author, label: Auteur, widget: string }
       - { name: abstract, label: Résumé, widget: text, required: false }
       - { name: tags, label: Mots-clés, widget: list, required: false }
-      - { name: body, label: Note, widget: markdown }
+      - { name: body, label: Note, widget: markdown, modes: [raw] }
 
   - name: dictionnaires
     label: Dictionnaires
@@ -69,7 +69,7 @@ collections:
         file: content/_index.md
         fields:
           - { name: title, label: Titre, widget: string }
-          - { name: body, label: Texte, widget: markdown }
+          - { name: body, label: Texte, widget: markdown, modes: [raw] }
       - name: anthologie
         label: Anthologie de la poésie
         file: content/anthologie.md
@@ -89,4 +89,4 @@ collections:
         file: content/a-propos.md
         fields:
           - { name: title, label: Titre, widget: string }
-          - { name: body, label: Texte, widget: markdown }
+          - { name: body, label: Texte, widget: markdown, modes: [raw] }
