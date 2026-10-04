@@ -25,3 +25,9 @@ npx pagefind --site public
 - `content/dictionnaires/*.md` : un `# Lettre` par lettre, entrées `terme` / `: définition`.
 - `content/anthologie.md` : `## Auteur`, `### Poème`.
 - `content/citations.md` : citations séparées par `---`.
+
+## Administration (Sveltia CMS)
+
+Interface d'édition : <https://vvnt.github.io/carnets/admin/> (configuration : `static/admin/config.yml`).
+Connexion par « Sign in with token » avec un jeton GitHub (accès *Contents* en lecture/écriture sur ce dépôt).
+Chaque enregistrement crée un commit sur `main`, ce qui relance le déploiement.
